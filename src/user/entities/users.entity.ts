@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
@@ -10,7 +11,7 @@ export class User {
   name: string;
   @Column({ type: 'varchar', width: 100 })
   email: string;
-  @Column({ type: 'varchar', width: 20 })
+  @Exclude()
   @Column({ type: 'varchar', width: 200 })
   password: string;
   @Column({ type: 'date' })
@@ -21,6 +22,7 @@ export class User {
   createdAt: Date;
   @UpdateDateColumn({ type: 'timestamp', nullable: true })
   updatedAt: Date | null;
+  @Exclude()
   @DeleteDateColumn({ type: 'timestamp', nullable: true })
   deletedAt: Date | null;
 
