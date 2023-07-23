@@ -14,7 +14,7 @@ services:
 
   app:
     build:
-      context: ../
+      context: ../server/
       dockerfile: Dockerfile
     container_name: user-info
     restart: always
@@ -23,4 +23,4 @@ services:
     ports: 
       - "3000:3000"
     env_file:
-      - ../.env
+      - ../server/.env
