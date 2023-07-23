@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    env_file:
+      - .env
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+
+  app:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    container_name: user-info
+    restart: always
+    depends_on:
+      - db
+    ports: 
+      - "3000:3000"
+    env_file:
+      - ../.env
