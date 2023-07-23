@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, UseFilters } from '@nestjs/common';
+import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 import { UserCreateDTO } from './dto/user-create.dto';
 import { UserUpdateDto } from './dto/user-update.dto';
 import { IUser } from './user.interface';
@@ -18,6 +19,7 @@ export class UsersController {
     return await this.usersService.getOneById(id);
   }
 
+  @IsPublic()
   @Post()
   async create(@Body() createUserDto: UserCreateDTO): Promise<IUser> {
     return await this.usersService.create(createUserDto)

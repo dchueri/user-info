@@ -5,8 +5,9 @@ import { IUser } from './user.interface';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/users.entity';
-import UserNotFoundException from 'src/common/exceptions/user-not-found.exception';
-import UserAlreadyExistsException from 'src/common/exceptions/user-already-exists.exception';
+import UserNotFoundException from '../common/exceptions/user-not-found.exception';
+import UserAlreadyExistsException from '../common/exceptions/user-already-exists.exception';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -41,6 +42,7 @@ export class UsersService {
       throw new UserAlreadyExistsException()
     }
     const user = this.usersRepository.create(createUserDto)
+    user.password = await this.hashPassword(createUserDto.password);
     return await this.usersRepository.save(user)
   }
 
@@ -72,5 +74,10 @@ export class UsersService {
     if (res.affected === 0) {
       throw new UserNotFoundException()
     }
+  }
+
+  async hashPassword(password: string): Promise<string> {
+    const saltOrRounds = 10;
+    return await bcrypt.hash(password, saltOrRounds);
   }
 }
