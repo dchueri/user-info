@@ -17,6 +17,8 @@ services:
       context: ../server/
       dockerfile: Dockerfile
     container_name: user-info
+    volumes:
+      - ../server:/usr/src/app
     restart: always
     depends_on:
       - db
