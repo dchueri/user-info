@@ -1,5 +1,5 @@
 import { Controller, HttpCode, HttpStatus, Post, UseGuards, Request } from '@nestjs/common';
-import UserNotFoundException from 'src/common/exceptions/user-not-found.exception';
+import UserNotFoundException from '../common/exceptions/user-not-found.exception';
 import { AuthService } from './auth.service';
 import { IsPublic } from './decorators/is-public.decorator';
 import { LocalAuthGuard } from './guards/local-auth.guard';
