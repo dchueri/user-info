@@ -71,6 +71,8 @@ export class UsersService {
       .andWhere('user.deletedAt IS NULL')
       .execute()
 
+    console.log(res)
+
     if (res.affected === 0) {
       throw new UserNotFoundException()
     }

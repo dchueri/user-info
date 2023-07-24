@@ -1,5 +1,5 @@
 import { Body, ClassSerializerInterceptor, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, UseFilters, UseInterceptors } from '@nestjs/common';
-import { IsPublic } from 'src/auth/decorators/is-public.decorator';
+import { IsPublic } from '../auth/decorators/is-public.decorator';
 import { UserCreateDTO } from './dto/user-create.dto';
 import { UserUpdateDto } from './dto/user-update.dto';
 import { IUser } from './user.interface';
