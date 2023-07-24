@@ -8,7 +8,7 @@ import { UsersService } from './users.service';
 import { Repository } from 'typeorm';
 import { usersArrayMock } from '../../test/factory';
 import { randomUUID } from 'crypto';
-import { UserCreateDTO } from './dto/user-create.dto';
+import { UserCreateDto } from './dto/user-create.dto';
 import { Reflector } from '@nestjs/core';
 
 describe('UserController (e2e)', () => {
@@ -25,7 +25,7 @@ describe('UserController (e2e)', () => {
       providers: [{
         provide: USERS_REPOSITORY_TOKEN,
         useValue: {
-          create: (createUserDto: UserCreateDTO) => {
+          create: (createUserDto: UserCreateDto) => {
             return {
               "id": randomUUID(),
               "name": createUserDto.name,
