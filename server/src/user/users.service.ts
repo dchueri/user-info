@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserCreateDTO } from './dto/user-create.dto';
+import { UserCreateDto } from './dto/user-create.dto';
 import { UserUpdateDto } from './dto/user-update.dto';
 import { IUser } from './user.interface';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -36,7 +36,7 @@ export class UsersService {
     return await this.usersRepository.findOneBy({ email, deletedAt: null })
   }
 
-  async create(createUserDto: UserCreateDTO): Promise<IUser> {
+  async create(createUserDto: UserCreateDto): Promise<IUser> {
     const existsUser = await this.getOneByEmail(createUserDto.email)
     if (existsUser) {
       throw new UserAlreadyExistsException()

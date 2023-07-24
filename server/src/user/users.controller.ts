@@ -1,6 +1,6 @@
 import { Body, ClassSerializerInterceptor, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, UseFilters, UseInterceptors } from '@nestjs/common';
 import { IsPublic } from '../auth/decorators/is-public.decorator';
-import { UserCreateDTO } from './dto/user-create.dto';
+import { UserCreateDto } from './dto/user-create.dto';
 import { UserUpdateDto } from './dto/user-update.dto';
 import { IUser } from './user.interface';
 import { UsersService } from './users.service';
@@ -59,7 +59,7 @@ export class UsersController {
   })
   @IsPublic()
   @Post()
-  async create(@Body() createUserDto: UserCreateDTO): Promise<IUser> {
+  async create(@Body() createUserDto: UserCreateDto): Promise<IUser> {
     return await this.usersService.create(createUserDto)
   }
 
