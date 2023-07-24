@@ -5,18 +5,24 @@
 ## Index
 
 * [Descrição](#descrição)
+	* [Regras de negócio](#regras-de-negócio)
 * [Iniciando](#iniciando)
 	* [Preparando o ambiente](#preparando-o-ambiente)
-  * [Utilizando Docker](#utilizando-docker)
+	* [Utilizando Docker](#utilizando-docker)
 * [Documentação](#documentação)
 * [Testes](#testes)
-* [Regras de negócio](#regras-de-negócio)
 * [Tecnologias](#tecnologias)
 * [Autor](#autor)
 
 ## Descrição
 
 O User Info é uma API para gerenciamento de usuários. Onde é possível visualizar, adicionar, editar ou excluir usuários.
+
+### Regras de negócio
+Foram adicionadas algumas regras de negócio como:
+ - Apenas a roda `/users/create` e `/auth/login` são públicas;
+ - O mesmo e-mail não pode ser utilizado para dois usuários diferentes;
+ - Toda deleção por meio da API é feita por meio de soft-delete(exclusão lógica).
 
 ## Iniciando
 
@@ -48,12 +54,6 @@ Acesse a documentação através do endpoint `/docs` na rota do "server".
 Ex.:
 
     localhost:3000/docs
-
-## Regras de negócio
-Foram adicionadas algumas regras de negócio como:
- - Apenas a roda `/users/create` e `/auth/login` são públicas;
- - O mesmo e-mail não pode ser utilizado para dois usuários diferentes;
- - Toda deleção por meio da API é feita por meio de soft-delete(exclusão lógica).
 
 ## Testes
 Para executar os testes automatizados da aplicação acesse a pasta `server` e execute o comando:
